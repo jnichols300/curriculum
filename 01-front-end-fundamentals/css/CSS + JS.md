@@ -242,14 +242,38 @@ So, to the main three components of front-end web development up in one word eac
 - HTML: Structure
 - CSS: Styling
 - Javascript: Behavior
+  
+  # JS: Pega and JS
+  
+  Example:
+  
+  ENUMCB.Who_VLDN = function() {
+    var isDKRefVisible = ENUMCB.getIsDKRefVisible();
+    try {
+      if (isDKRefVisible){
+        var answer = pega.ui.ClientCache.find("pyWorkPage.Respondent.DoesKnowResident");
+        ENUMCB.Required("pyWorkPage.Respondent.DoesKnowResident","pyWorkPage.Respondent.DKRefused.Who");
+      } else {
+        ENUMCB.Required("pyWorkPage.Respondent.DoesKnowResident");
+      }
+    } catch(e) {
+        alert("***ENUMCB Error -" + e.message);
 
-# JS: The Client-Side Programming Language of the Web (5min)
+    }
+};
+  
+  function EnumCB_Who_POST() {
+  var workPage = pega.ui.ClientCache.find("pyWorkPage");
+  ENUMCB.Who_VLDN();
+  if(!workPage.hasMessages()) {
+    var respPage = pega.ui.ClientCache.find("pyWorkPage.Respondent");
+    var questFlags = pega.ui.ClientCache.find("pyWorkPage.QuestFlags");
+    var answer = respPage.get("DoesKnowResident").getValue();
+    if(answer == "yes") {
+      questFlags.put("NextSurveyQuestion","PopCount_QSTN");
+    } else {
+      questFlags.put("NextSurveyQuestion","ExitPop_status_QSTN");
+    }
+  }
+}
 
-- Brief history: Created in 10 days by Brendan Eyck, of Mozilla. *Not* related to Java in any way but its name.
-  - "Java" is to "Javascript" as "ham" is to "hamster"
-
-- ST-wg: What's a programming language?
-  - What can it do that a markup language like HTML can't?
-  - It let's us do things! It lets us act on information, manipulate it, display it, pretty much whatever we want.
-- Javascript enables us to do all that in a browser.
-  - Using the tools you learned in the pre-work (e.g., data types, loops, functions).
