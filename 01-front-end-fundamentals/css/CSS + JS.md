@@ -242,38 +242,328 @@ So, to the main three components of front-end web development up in one word eac
 - HTML: Structure
 - CSS: Styling
 - Javascript: Behavior
+ 
+ ## Next, open the site in Chrome, and open the Dev Tools
+
+- Command + Option + I
+- The "Console" is a REPL
+  - “Read-Eval-Print Loop”.
+  - Programming environment that lets us run Javascript code one line at a time.
+  - What does it do?
+    1. (R)eads our code.
+    2. (E)valuates it.
+    3. (P)rints it to the console.
+    4. Then it (L)oops back to the beginning, ready to (R)ead the next line of code we feed it.
+
+# Primitive Data Types
+
+## Intro (5min)
+Primitive data types are the building blocks of Javascript.
+- Whenever you do anything in Javascript, you are creating and changing these basic pieces of information.
+
+There are five primitive data types.
+
+### ST-wg: What are they?
+
+  1. Numbers
+  2. Strings
+  3. Booleans
+  4. Undefined
+  5. Null
+
+We store data types in variables. A variable is a "bucket" that holds data. You can pass the bucket around, empty it, refill it, etc.
+
+- Format: `var NAME = DATA;`
+
+  ```javascript
+  // For example...
+  var myClass = "WDI6";
+
+  // After instantiation you can then reference variables by just their name, without "var".
+  myClass;
+  => "WDI6"
+
+  // Variables can not only store single data types but also expressions.
+  var multiplication = 5 * 2;
+  => 10
+  ```
+
+- Javascript is a "dynamic" or "untyped" language, meaning a variable can switch between data types.
+
+  ```javascript
+  // This change is valid in Javascript.
+  var myFavoriteNumber = 5;
+  var myFavoriteNumber = "five";
+  ```
+
+## Numbers (10min)
+
+In Javascript, numbers are numerical values -- straightforward!
+  - All numbers are of type "number," regardless of format (e.g., integer, float/decimal).
+
+  ```javascript
+  // The "typeof" operator returns the data type of a value
+  typeof 5;
+  => "number"
+
+  typeof 5.5;
+  => "number"
+  ```
+
+Operations
+- Math in Javascript follows the same rules you've known since elementary school math.
+- Basic operators: `+, -, *, /`
+
+  ```javascript
+  // Addition
+  10 + 2;
+  => 12
+
+  // Subtraction
+  10 - 2;
+  => 8
+
+  // Multiplication
+  10 * 2;
+  => 20
+
+  // Division
+  10 / 2;
+  => 5
+  ```
+
+- Order of precedence: P(E)MDAS (Parentheses, Multiplication, Division, Addition, Subtraction)
+
+  ```javascript
+  // This would be interpreted as...
+  // Go through step by step with class.
+  ( 4 + 2 ) * ( 12 / 3 );
+  => 6 * 4
+  => 24
+
+  // How would this be interpreted?
+  // Like operators are processed from left-to-right. In this case, division happens before multiplication.
+  ( 8 / 4 * 2 ) + 1
+  => ( 2 * 2 ) + 1
+  => 5
+  ```
+
+- % (Modulus)
+  - Returns the remainder of a division operation.
+
+    ```javascript
+    // What is the remainder of 12 / 5?
+    12 % 5;
+    => 2
+    ```
+
+  - Q: Modulus has a pretty handy use case: to check if a number is even.
+    - A number is even if it is divisible by 2.
+    - Check if a number is even: `NUMBER % 2`
+      - What should this return?
+
+      ```javascript
+      // Returns 0 if even.
+      4 % 2;
+      => 0
+
+      // Returns 1 if odd.
+      5 % 2;
+      => 1
+      ```
+
+### NaN ("Not a number")
+- A special number...that's not a number?
+
+    ```javascript
+    typeof NaN
+    => "number"
+    ```
+
+  - You usually get NaN when the result of a math operation is not real (e.g., dividing 0 by 0, multiplying strings together).
+
+    ```javascript
+    0/0;
+    => NaN
+    ```
+
+- You can test whether a value is a valid number using the `isNaN()` function.
+
+```javascript
+// isNaN returns false if used on a valid number.
+var myFavoriteNumber = 5;
+isNaN( myFavoriteNumber );
+=> false
+```
+
+## Undefined & Null (5min)
+Values that indicate the lack of a meaningful value.
+- Anybody else find that weird? How is there more than one data type for nothing?
+- Q: What's the difference?
+
+Undefined: automatically applied to a variable with no value.  
+
+```javascript
+// A primitive data type of type undefined with only one value: "undefined".
+typeof undefined;
+=> "undefined"
+
+// Any property that has not been assigned a value is "undefined".
+var nothing;
+=> undefined
+
+// A function with no defined return value has a return value of "undefined".
+
+// You won't find yourself assigning "undefined" to a value. That's where "null" comes in.
+var nothing = undefined;
+```
+
+Null: an explicitly-assigned non-value.
+  - Javascript will never set anything to `null` by itself. `null` only appears when you tell it to.
+  - If I'm not mistaken, the only thing that's inherently `null` in Javascript is `null` itself!
+  - Can you imagine a situation where that would be useful?
+    - Placeholder for a variable that you know will be replaced with an actual value later on.
+
+
+So the main difference between `undefined` and `null` is intention. Other than that, they're both...nothing.
+
+### Type Coercion
+Javascript will try to make sense of any strange operations you throw at it.
+- By "strange", I mean subtracting a number from a string, or multiplying `null` by 100.
+- It does this through something called "type coercion" -- converting data types.
+
+You might encounter this when dealing with numerical values but for whatever reason some of them are in string form.
+  - Q: Have students guess what the results of the following code examples are...
+
+```javascript
+// In some cases Javascript is helpful and converts strings to numbers in the correct way.
+"3" - "2"
+=> 1
+
+// ...but sometimes it doesn't. In this example, the + operator acts as if it's concatenating two strings.
+"3" + "2"
+=> 32
+
+// And this?
+"five" * 5;
+=> NaN
+```
+
+When in doubt, convert data types that should be numbers using `parseInt()`.
+
+```javascript
+// parseInt converts a string to a number value, if available.
+parseInt( "3" );
+=> 3
+
+parseInt( "burrito" );
+=> NaN
+```
+
+There are other examples of type coercion, but the point here isn't to remember them all. Just be aware that sometimes Javascript will fire weird results back at you with no explanation. Sometimes, type coercion might be the culprit.
+
+## Strings (10min)
+Strings are words in javascript!
+
+We instantiate strings using the "string literal" form.
+
+```javascript
+// Can use single quotes to instantiate a string...
+var greeting = 'Hello!';
+
+/// ...or double quotes.
+var greeting = "Hi there!";
+```  
+
+### Escape sequences
+- Sometimes you will need to use special characters or formatting in strings that can't be entered the same way as you would in a word processor. In these cases, you use "escape sequences".
+- Syntax: backslash + letter (e.g., `"\n"`).
+- Examples:
+
+  ```javascript
+  // "\n" = new line
+  "Hello\nGoodbye"
+  =>"Hello"
+  =>"Goodbye"
+
+  // "\t" = tab
+  "\tOnce upon a time..."
+  => "     Once upon a time..."
+  ```
+
+- More examples [here](http://www.javascriptkit.com/jsref/escapesequence.shtml).  
+
+### Concatenation
+- Like numbers, you can add strings together using `+`.
+
+  ```javascript
+  var city = "Washington, ";
+  var state = "DC";
+  var location = city + state;
+  => "Washington, DC"
+  ```
+
+- You can't, however, use other math operators on strings.
+
+  ```javascript
+  // Q: What do you think happens when we try to subtract strings from each other?
+  // When using the "-" operator, the operands are treated as numbers.
+  "hamburger" - "ham"
+  => NaN
+
+  // The same goes for multiplication and division.
+  "hamburger" * 3
+  => NaN
+  ```
+
+String methods
+- Javascript comes with methods you can use to inspect and modify strings.
+- Examples:
+
+  ```javascript
+  // .search(): find the starting index of a string value.
+  // String indexes are 0-based, so the index of a string's first character is 0.
+  var greetings = "Hi there Andy!";
+  greetings.search( "Andy" );
+  => 9
+
+  // .slice(): return and store a portion of a string.
+  var greetings = "Hi there Andy!";
+  var buddy = greetings.slice( 9, 13 );
+  ```
   
   # JS: Pega and JS
-  
-  Example:
-  
-  ENUMCB.Who_VLDN = function() {
-    var isDKRefVisible = ENUMCB.getIsDKRefVisible();
-    try {
-      if (isDKRefVisible){
-        var answer = pega.ui.ClientCache.find("pyWorkPage.Respondent.DoesKnowResident");
-        ENUMCB.Required("pyWorkPage.Respondent.DoesKnowResident","pyWorkPage.Respondent.DKRefused.Who");
-      } else {
-        ENUMCB.Required("pyWorkPage.Respondent.DoesKnowResident");
-      }
-    } catch(e) {
-        alert("***ENUMCB Error -" + e.message);
+ 
+ # Example:
+```javascript
+ EnubeCB.Who_VLDN = function() {
+   var isDKRefVisible = EnubeCB.getIsDKRefVisible();
+   try {
+     if (isDKRefVisible){
+       var answer = pega.ui.ClientCache.find("pyWorkPage.Respondent.DoesKnowResident");
+       EnubeCB.Required("pyWorkPage.Respondent.DoesKnowPerson","pyWorkPage.Responder.Who");
+     } else {
+       EnubeCB.Required("pyWorkPage.Respondent.DoesKnowPerson");
+     }
+   } catch(e) {
+       alert("***EnubeCB Error -" + e.message);
 
-    }
+   }
 };
-  
-  function EnumCB_Who_POST() {
-  var workPage = pega.ui.ClientCache.find("pyWorkPage");
-  ENUMCB.Who_VLDN();
-  if(!workPage.hasMessages()) {
-    var respPage = pega.ui.ClientCache.find("pyWorkPage.Respondent");
-    var questFlags = pega.ui.ClientCache.find("pyWorkPage.QuestFlags");
-    var answer = respPage.get("DoesKnowResident").getValue();
-    if(answer == "yes") {
-      questFlags.put("NextSurveyQuestion","PopCount_QSTN");
-    } else {
-      questFlags.put("NextSurveyQuestion","ExitPop_status_QSTN");
-    }
-  }
+```
+```javascript
+ function EnubeCB_Who_POST() {
+ var workPage = pega.ui.ClientCache.find("pyWorkPage");
+ EnubeCB.Who_VLDN();
+ if(!workPage.hasMessages()) {
+   var rPage = pega.ui.ClientCache.find("pyWorkPage.Responder");
+   var qFlags = pega.ui.ClientCache.find("pyWorkPage.Flags");
+   var answer = respPage.get("DoesKnowPerson").getValue();
+   if(answer == "yes") {
+     questFlags.put("NextQuestion","PopCount");
+   } else {
+     questFlags.put("NextQuestion","ExitPop_status");
+   }
+ }
 }
-
+```
