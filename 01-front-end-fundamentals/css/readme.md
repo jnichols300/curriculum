@@ -60,34 +60,7 @@ So one way we can style elements in HTML is in the tag itself. These are called 
 <p style="background:blue;"></p>
 ```
 
-### T & T (3m)
-Knowing not too much about coding. Take a couple minutes and chat with your partner about why this particular way of styling an element might not be the greatest approach?
-
-> Don't use inline styles if you can avoid it. They are very specific! (More on this in a minute)
-
-The next approach to implementing a style is to put the styling in the `<head>`:
-
-```html
-<head>
-  <title>CSS!</title>
-  <style>
-    p {
-      background: blue
-    }
-  </style>
-</head>
-```
-> You've seen this before, but I want to highlight some syntax here. From p until the ending curly brace is a CSS rule. The p in this code is what's called the selector. The background  in the code is the property. Finally blue is the value.
-
-This is a bit better. I feel less dirty. But feel weird about this one too. Why might that be? (ST-WG)
-
-> What if you have both styles in the head *and* inline styles? Which style will be applied? Why is this?
-
 What's the best way? External stylesheets! Let's create a new file called `styles.css`:
-
-```bash
-$ touch styles.css
-```
 
 In our `index.html` let's go ahead and link to that stylesheet in the `<head>`:
 
@@ -105,7 +78,7 @@ p{
 }
 ```
 
-Ahh, much bettah. You might be asking yourself, but Andy? that seems like a lot more work. And you might be right initially. But we're talking about 1 `<p>` right now. What if we're talking about 100 `<p>`'s and now those elements were spread across multiple web pages. Now all of a sudden this last method is less work.
+That seems like a lot more work. And you might be right initially. But we're talking about 1 `<p>` right now. What if we're talking about 100 `<p>`'s and now those elements were spread across multiple web pages. Now all of a sudden this last method is less work.
 
 ## CSS Selectors(10m)
 As you can see, there's more than one place to target elements. There's also multiple WAYS you can target elements. Let's throw some additional content in `index.html`:
