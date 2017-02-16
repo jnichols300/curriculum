@@ -212,83 +212,10 @@ At the top of our `styles.css`:
 Now when we refresh, all of our 20% widths are the same regardless of padding. It also includes border! However, it does not include the margin.
 
 ## CSS Properties and values
-Man, there's alot of them. We've seen many just in this lesson thus far. There are far more than I can cover. Additionally, there's just no way to know them all. Unless you're a CSS savant. Fortunately, there are some great references. Here's just a few!
+References
 
-[CSS Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
-[CSS Tricks- An awesome resource for cool CSS schtuff](https://css-tricks.com)
-
-## We do- Wendy G Bite *Code Along*
-Exercise is [here!](https://github.com/ga-dc/wendy_bite)
-> notes will be pushed after lesson
-## We do- Wendy G Bite *Code Along* (60 m)
-> ST-WG. Use notes as a guideline and tool for students later. Don't necessarily have to stick to it 100%
-
-    $ git clone https://github.com/ga-dc/wendy_bite
-
-I think we can knock out an easy one early on. I can see by looking at that page that the background color and text color are mostly similar. Additionally centering everything and giving it a little bit of a buffer with the padding/border/margin on the edges will be nice. Let's go ahead and change that in `styles.css`:
-
-```css
-body{
-  background: #444;
-  color: #fff;
-  border: 5px solid #777;
-  margin: 2em auto;
-  padding: 2em;
-
-}
-```
-
-Alright, just with 5 properties already looking a lot better! I think we can do another quick fix by just centering the text for the header and footer.
-
-```css
-header, footer{
-  text-align: center;
-}
-```
-
-I think the default link color is bothering me. Lets ahead and change that and while were at it change the links to bold, they look bold to me:
-
-```css
-a {
-  color: #66CD9B;
-  font-weight: bold;
-}
-```
-
-I'm digging those lines above and below that main section. Let's go ahead and add that:
-
-```css
-section {
-  border-color: #ccc;
-  border-width: 1px 0;
-  border-style: solid;
-  /*add padding and margin as necessary*/
-}
-```
-
-Our words are too close together, lets fix that:
-
-```css
-p {
-  line-height:1.5;
-}
-```
-
-Man, this is already looking pretty close! Now just some small things. Theres a tiny border around the image, but its not directly on the image. I also notice that the text in the example isn't butting right up next to the image either. Let's fix all of that!
-
-```css
-img {
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin-left: 1em;
-  margin-bottom: 1em;
-}
-```
-
-I think that's pretty good. There's some minor tweaks that can be made. Like font and changing the color for active links.
-
-
-## You do/ Finish for HW - Dew
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+https://css-tricks.com
 
 
 # HTML, CSS and Javascript (20min)
@@ -297,13 +224,6 @@ HTML (content), CSS (style) and Javascript (behavior) as the main components of 
   - HTML: Structure
   - CSS: Styling
   - JS: ???
-
-Think-Pair-Share: students identify Javascript features in Cookie Clicker.
-- 3 minutes: Go look at it.
-- 3 minutes: Discuss and compare findings in pairs.
-- Think about what functionality the site has after it has loaded.
-- Q's for students
-  - Why would you say a particular feature is "run" by Javascript instead of, say, CSS?
 
 Exercise result categories
 - Interactivity
