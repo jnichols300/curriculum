@@ -1,0 +1,42 @@
+# HTML, CSS and Javascript (20min)
+HTML (content), CSS (style) and Javascript (behavior) as the main components of front-end web development.
+- Q: Sum up the roles HTML and CSS play on a website in a couple of sentences.
+  - HTML: Structure
+  - CSS: Styling
+  - JS: ???
+
+Think-Pair-Share: students identify Javascript features in Cookie Clicker.
+- 3 minutes: Go look at it.
+- 3 minutes: Discuss and compare findings in pairs.
+- Think about what functionality the site has after it has loaded.
+- Q's for students
+  - Why would you say a particular feature is "run" by Javascript instead of, say, CSS?
+
+Exercise result categories
+- Interactivity
+  - Click something, something happens.
+    - Like: increment Like counter.
+    - Comment: submit comment, appended to post.
+  - Javascript defines what happens on a page depending on how you interact with it.
+- No Refreshes / User Experience
+  - When I comment on a post, Facebook is able to process my new comment and render it on the page without refreshing the entire page.
+  - Gives the page a much smoother user experience compared to a static page that doesn't have this sort of functionality.
+- Communication with a server
+  - Javascript is somehow telling a server that (a) a user has done something, (b) save that interaction and (c) display the results of that interaction to all other users.
+- Not an exhaustive list of Javascript properties, but we'll go over these and more in more detail later on in the course.
+
+So, to the main three components of front-end web development up in one word each...
+- HTML: Structure
+- CSS: Styling
+- Javascript: Behavior
+
+# JS: The Client-Side Programming Language of the Web (5min)
+
+- Brief history: Created in 10 days by Brendan Eyck, of Mozilla. *Not* related to Java in any way but its name.
+  - "Java" is to "Javascript" as "ham" is to "hamster"
+
+- ST-wg: What's a programming language?
+  - What can it do that a markup language like HTML can't?
+  - It let's us do things! It lets us act on information, manipulate it, display it, pretty much whatever we want.
+- Javascript enables us to do all that in a browser.
+  - Using the tools you learned in the pre-work (e.g., data types, loops, functions).
