@@ -12,10 +12,6 @@
 - Apply knowledge of the box model to adjust spacing between and around elements on a page
 - Bookmark 2-3 good resources that developers can use refer to for CSS help
 
-## Opening Framing (3 min)
-> Although some of this may be review from the prework, repetition is key to becoming a good programmer!
-
-Wouldn't it be nice to make our webpages look schnazzy? Enter CSS. There is such a wide breadth of things to learn about CSS and honestly, you could probably teach a whole 12 weeks to understand all the capabilities, nuances and subtleties. So we'll only be scratching the surface with it, but I encourage you to experiment with CSS on your own. As you consistently use CSS you realize, while frustrating, becomes awesome to utilize.
 
 ## Separation of Concerns
 
